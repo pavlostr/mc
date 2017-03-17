@@ -1,1 +1,1 @@
-# The Mceliece Algorithm implemented with Sagemath tool.
+# The Mceliece Algorithm implemented with Sage tool.
