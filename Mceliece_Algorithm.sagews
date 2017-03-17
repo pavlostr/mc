@@ -44,10 +44,6 @@ def encode(u):
 return u*G_Goppa;
 
 
-
-
-
-
 # decoding
 def split(p):
 Phi = p.parent()
