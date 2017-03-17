@@ -1,1 +1,1 @@
-# The Mceliece Algorithm implemented with Sage tool.
+# O αλγόριθμος Mceliece υλοποιημένος με το εργαλείο Sage.
