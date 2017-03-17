@@ -35,7 +35,7 @@ be = bin(eval(H_gRS[i,j].int_repr()))[2:];
 be = '0'*(m-len(be))+be;
 be = list(be);
 H_Goppa[m*i:m*(i+1),j]=vector(map(int,be));
-
+# compute a generator matrix G_Goppa as right kernel of H_Goppa.
 Krnl = H_Goppa.right_kernel();
 G_Goppa = Krnl.basis_matrix();
 
@@ -48,7 +48,7 @@ return u*G_Goppa;
 
 
 
-#decoding
+# decoding
 def split(p):
 Phi = p.parent()
 p0 = Phi([sqrt(c) for c in p.list()[0::2]]);
@@ -62,9 +62,11 @@ return u.mod(g);
 
 (g0,g1) = split(g);
 w = g0*g_inverse(g1);
-T = g_inverse(s);
+# computes T as the g(z) inverse of s
+T = g_inverse(s); 
 (T0,T1) = split(T+z);
 R = T0+w*T1;
+# computes the solution and the error locator polynomial σ(z) 
 (d,u,v) = xgcd(PR(1),PR(R.list()));
 a = g*u;
 b = g*v;
@@ -72,7 +74,8 @@ sigma = a^2+z*b^2;
 
 u = vector(F,[randint(0,1) for _ in range(k)]);
 c = encode(u);
-e = vector(F,n); # e = zero vector
+# e = zero vector
+e = vector(F,n);
 for trial in range(t):
 j = randint(0,n-1);
 e[j] += 1;
